@@ -9,6 +9,7 @@ JENKINS_USER = "admin"
 JENKINS_API_TOKEN = "your_api_token_here"
 MODEL_PATH = "./models/llama-2-7b.ggml.q4_0.bin"
 LOG_FILE = "./logs/build_summary.log"
+TEAMS_WEBHOOK_URL = "https://outlook.office.com/webhook/..."  
 
 # === FETCH BUILDS FROM JENKINS ===
 def fetch_jenkins_builds():
@@ -38,6 +39,22 @@ def log_summary(summary):
         f.write("\n=== {} ===\n".format(datetime.now().isoformat()))
         f.write(summary + "\n")
 
+# === SEND TO TEAMS ===
+def send_to_teams(message: str):
+    payload = {
+        "text": message
+    }
+    headers = {
+        "Content-Type": "application/json"
+    }
+    try:
+        response = requests.post(TEAMS_WEBHOOK_URL, data=json.dumps(payload), headers=headers)
+        response.raise_for_status()
+    except requests.exceptions.RequestException as e:
+        print(f"[ERROR] Failed to send message to Teams: {e}")
+
+
+
 # === MAIN FLOW ===
 def main():
     builds_data = fetch_jenkins_builds()
@@ -47,6 +64,7 @@ def main():
 
     summary = summarize_builds(builds_data)
     log_summary(summary)
+    send_to_teams(summary)
 
 if __name__ == "__main__":
     main()
