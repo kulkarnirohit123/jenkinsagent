@@ -23,7 +23,7 @@ A Jenkins agent is a node that runs jobs delegated by the Jenkins master. This r
 1. Clone the repository:
     ```bash
     git clone https://github.com/rohit/jenkinsagent.git
-Next Steps:
+2. Next Steps:
 
 Place your quantized LLaMA model at:
 ```bash
