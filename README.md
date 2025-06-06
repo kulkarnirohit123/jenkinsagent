@@ -28,11 +28,11 @@ Next Steps:
 Place your quantized LLaMA model at:
 ```bash
 ./models/llama-2-7b.ggml.q4_0.bin
-
+```
 Install required packages:
 ```bash
 pip install llama-cpp-python requests
-
+```
 Run the agent manually:
 ```bash
 python jenkins_agent.py
