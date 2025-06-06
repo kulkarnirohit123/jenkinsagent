@@ -23,6 +23,15 @@ A Jenkins agent is a node that runs jobs delegated by the Jenkins master. This r
 1. Clone the repository:
     ```bash
     git clone https://github.com/rohit/jenkinsagent.git
+Next Steps:
+Place your quantized LLaMA model at:
+./models/llama-2-7b.ggml.q4_0.bin
+Install required packages:
+
+pip install llama-cpp-python requests
+Run the agent manually:
+
+python jenkins_agent.py
     cd jenkinsagent
     ```
 
