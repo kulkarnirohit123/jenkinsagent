@@ -36,7 +36,7 @@ pip install llama-cpp-python requests
 Run the agent manually:
 ```bash
 python jenkins_agent.py
-    cd jenkinsagent
+cd jenkinsagent
  ```
 
 2. Follow the setup instructions in the `docs/setup.md` file.
